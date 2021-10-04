@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Auction
@@ -18,7 +18,7 @@ dataSources:
         - OrderBuyed
       abis:
         - name: Auction
-          file: ./abis/Auction.json
+          file: Auction/abis/Auction.json
       eventHandlers:
         - event: AuctionEnded(uint256,uint256,uint256,address,uint256)
           handler: handleAuctionEnded
@@ -26,4 +26,4 @@ dataSources:
           handler: handleHighestBidIncreased
         - event: OrderBuyed(uint256,uint256,uint256,address,uint256)
           handler: handleOrderBuyed
-      file: ./src/mapping.ts
+      file: Auction/Auction.wasm
