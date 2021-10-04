@@ -1,0 +1,23 @@
+type AuctionEnded @entity {
+  id: ID!
+  orderNumber: BigInt! # uint256
+  initialVoucherId: BigInt! # uint256
+  finalVoucherId: BigInt! # uint256
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type HighestBidIncreased @entity {
+  id: ID!
+  bidder: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type OrderBuyed @entity {
+  id: ID!
+  orderNumber: BigInt! # uint256
+  initialVoucherId: BigInt! # uint256
+  finalVoucherId: BigInt! # uint256
+  buyer: Bytes! # address
+  amount: BigInt! # uint256
+}

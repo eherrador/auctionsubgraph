@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Auction
+    network: rinkeby
+    source:
+      address: "0x638301A3aCb9966c14e7D9c5442E4Ae157eddd73"
+      abi: Auction
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEnded
+        - HighestBidIncreased
+        - OrderBuyed
+      abis:
+        - name: Auction
+          file: ./abis/Auction.json
+      eventHandlers:
+        - event: AuctionEnded(uint256,uint256,uint256,address,uint256)
+          handler: handleAuctionEnded
+        - event: HighestBidIncreased(address,uint256)
+          handler: handleHighestBidIncreased
+        - event: OrderBuyed(uint256,uint256,uint256,address,uint256)
+          handler: handleOrderBuyed
+      file: ./src/mapping.ts
